@@ -1,0 +1,150 @@
+/* css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --gold: #c5a059;
+    --glass: rgba(255, 255, 255, 0.1);
+    --font-titles: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--black);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navegación Estilo Chanel */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* Efecto Gaultier */
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: var(--font-titles);
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--black);
+    margin-left: 2rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    text-align: center;
+}
+
+.hero h1 {
+    font-family: var(--font-titles);
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.btn-luxury {
+    padding: 1rem 2.5rem;
+    border: 1px solid var(--white);
+    background: transparent;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.5s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-luxury:hover {
+    background: var(--white);
+    color: var(--black);
+}
+
+/* Catálogo Grid */
+.catalog-container {
+    padding: 8rem 5% 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.perfume-card {
+    border: 1px solid #f0f0f0;
+    padding: 1rem;
+    transition: 0.4s;
+    text-align: center;
+}
+
+.perfume-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+.perfume-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.perfume-card h3 {
+    font-family: var(--font-titles);
+    font-size: 1.2rem;
+}
+
+.price {
+    color: var(--gold);
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+/* Footer */
+footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 4rem 5%;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .nav-links { display: none; } /* Simplificado para móvil */
+}
