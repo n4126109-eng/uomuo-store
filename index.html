@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UOMUO | Luxury Fragrances</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+
+    <div class="logo-container">
+      <img src="assets/logo.jpg" alt="UOMUO Logo">
+      <h1>UOMUO</h1>
+    </div>
+
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+
+    <img
+      src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=1600&q=80"
+      alt="Luxury Perfume"
+      class="hero-image"
+    >
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <span class="subtitle">Luxury Fragrance House</span>
+
+      <h2>
+        Elegancia.
+        <br>
+        Poder.
+        <br>
+        Exclusividad.
+      </h2>
+
+      <p>
+        Inspirado en la sofisticación parisina y la moda de alta costura.
+      </p>
+
+      <a href="#catalogo" class="luxury-btn">
+        Descubrir Colección
+      </a>
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section fade-in">
+
+    <div class="about-card">
+      <h3>La esencia del lujo moderno</h3>
+
+      <p>
+        UOMUO combina el minimalismo elegante de Chanel con la estética atrevida y sofisticada de Jean Paul Gaultier.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- CATALOGO -->
+  <section class="catalog-section" id="catalogo">
+
+    <div class="catalog-header fade-in">
+      <span>Luxury Collection</span>
+      <h2>Perfumes Icónicos</h2>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="filters fade-in">
+
+      <input type="text" id="searchInput" placeholder="Buscar perfume...">
+
+      <select id="brandFilter">
+        <option value="all">Todas las marcas</option>
+        <option value="Dior">Dior</option>
+        <option value="Chanel">Chanel</option>
+        <option value="Tom Ford">Tom Ford</option>
+        <option value="Jean Paul Gaultier">Jean Paul Gaultier</option>
+        <option value="YSL">YSL</option>
+      </select>
+
+    </div>
+
+    <!-- PRODUCTOS -->
+    <div class="products-grid" id="productsGrid">
+
+      <div class="product-card" data-name="Sauvage Elixir" data-brand="Dior">
+        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=80">
+        <div class="product-info">
+          <small>Dior</small>
+          <h3>Sauvage Elixir</h3>
+          <p>Lavanda, canela y maderas intensas.</p>
+          <span>S/ 780</span>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Bleu de Chanel" data-brand="Chanel">
+        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=900&q=80">
+        <div class="product-info">
+          <small>Chanel</small>
+          <h3>Bleu de Chanel</h3>
+          <p>Cítricos, incienso y cedro.</p>
+          <span>S/ 690</span>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Le Male Le Parfum" data-brand="Jean Paul Gaultier">
+        <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=900&q=80">
+        <div class="product-info">
+          <small>Jean Paul Gaultier</small>
+          <h3>Le Male Le Parfum</h3>
+          <p>Cardamomo, vainilla y ámbar.</p>
+          <span>S/ 650</span>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Black Orchid" data-brand="Tom Ford">
+        <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59db9?auto=format&fit=crop&w=900&q=80">
+        <div class="product-info">
+          <small>Tom Ford</small>
+          <h3>Black Orchid</h3>
+          <p>Chocolate negro, trufa y orquídea.</p>
+          <span>S/ 920</span>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Libre Intense" data-brand="YSL">
+        <img src="https://images.unsplash.com/photo-1619994403073-2cec99c8c2b1?auto=format&fit=crop&w=900&q=80">
+        <div class="product-info">
+          <small>YSL</small>
+          <h3>Libre Intense</h3>
+          <p>Lavanda francesa y vainilla.</p>
+          <span>S/ 610</span>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Oud Wood" data-brand="Tom Ford">
+        <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=900&q=80">
+        <div class="product-info">
+          <small>Tom Ford</small>
+          <h3>Oud Wood</h3>
+          <p>Oud exótico y sándalo.</p>
+          <span>S/ 1100</span>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Allure Homme Sport" data-brand="Chanel">
+        <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=900&q=80">
+        <div class="product-info">
+          <small>Chanel</small>
+          <h3>Allure Homme Sport</h3>
+          <p>Naranja, almizcle y tonka.</p>
+          <span>S/ 640</span>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="La Nuit de L'Homme" data-brand="YSL">
+        <img src="https://images.unsplash.com/photo-1557170334-a9086bd8c7ee?auto=format&fit=crop&w=900&q=80">
+        <div class="product-info">
+          <small>YSL</small>
+          <h3>La Nuit de L'Homme</h3>
+          <p>Cardamomo y cedro oscuro.</p>
+          <span>S/ 590</span>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Ultra Male" data-brand="Jean Paul Gaultier">
+        <img src="https://images.unsplash.com/photo-1610461888750-10bfc601b874?auto=format&fit=crop&w=900&q=80">
+        <div class="product-info">
+          <small>Jean Paul Gaultier</small>
+          <h3>Ultra Male</h3>
+          <p>Pera, vainilla y canela.</p>
+          <span>S/ 620</span>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Fahrenheit" data-brand="Dior">
+        <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=900&q=80">
+        <div class="product-info">
+          <small>Dior</small>
+          <h3>Fahrenheit</h3>
+          <p>Cuero, nuez moscada y violeta.</p>
+          <span>S/ 560</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contact-section" id="contacto">
+
+    <div class="contact-box fade-in">
+
+      <div class="contact-info">
+        <span>Contacto</span>
+        <h2>Visítanos</h2>
+
+        <p>
+          Av. Javier Prado Este 2500,
+          San Isidro, Lima.
+        </p>
+
+        <a href="https://wa.me/51900000000" class="luxury-btn" target="_blank">
+          WhatsApp
+        </a>
+
+        <div class="socials">
+          <a href="https://instagram.com" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+
+          <a href="https://facebook.com" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="map-box">
+        <iframe
+          src="https://www.google.com/maps?q=Av.+Javier+Prado+Este+2500,+San+Isidro,+Lima,+Perú&output=embed"
+          loading="lazy">
+        </iframe>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 UOMUO — Luxury Fragrances</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
