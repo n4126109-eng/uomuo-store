@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OUMUO — Perfumes de Lujo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A96E;
+      --gold-light: #E8D5AA;
+      --gold-dark: #8B6D3F;
+      --black: #0A0908;
+      --dark: #111009;
+      --dark2: #1A1814;
+      --dark3: #242220;
+      --text: #E8E2D9;
+      --text-muted: #9A9080;
+      --cream: #F5EDD9;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 4rem;
+      background: rgba(10,9,8,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,169,110,0.12);
+      transition: padding 0.4s;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dark);
+      padding: 0.55rem 1.5rem;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 4rem;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,169,110,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,169,110,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-text { z-index: 1; }
+
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      color: var(--cream);
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.9;
+      max-width: 420px;
+      margin-bottom: 3rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      padding: 1rem 2.8rem;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: color 0.3s;
+    }
+
+    .btn-secondary:hover { color: var(--gold); }
+
+    .btn-secondary::after {
+      content: '→';
+      transition: transform 0.3s;
+    }
+
+    .btn-secondary:hover::after { transform: translateX(4px); }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      height: 75vh;
+      z-index: 1;
+    }
+
+    .bottle-frame {
+      width: 300px;
+      height: 480px;
+      position: relative;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
+    }
+
+    .bottle-svg { width: 100%; height: 100%; }
+
+    .glow-ring {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      height: 30px;
+      background: radial-gradient(ellipse, rgba(201,169,110,0.35) 0%, transparent 70%);
+      filter: blur(6px);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-ornament {
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14rem;
+      font-weight: 300;
+      color: rgba(201,169,110,0.03);
+      letter-spacing: -0.05em;
+      top: 50%;
+      right: -2rem;
+      transform: translateY(-50%);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .strip {
+      border-top: 1px solid rgba(201,169,110,0.15);
+      border-bottom: 1px solid rgba(201,169,110,0.15);
+      padding: 1rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--dark2);
+      overflow: hidden;
+    }
+
+    .strip-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .strip-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .featured {
+      padding: 7rem 4rem;
+      background: var(--dark);
+    }
+
+    .perfume-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .perfume-card {
+      background: var(--dark2);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: background 0.4s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .perfume-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform 0.5s;
+    }
+
+    .perfume-card:hover { background: var(--dark3); }
+    .perfume-card:hover::before { transform: scaleX(1); }
+
+    .card-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem;
+      font-weight: 300;
+      color: rgba(201,169,110,0.08);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      transition: color 0.4s;
+    }
+
+    .perfume-card:hover .card-number { color: rgba(201,169,110,0.15); }
+
+    .card-brand {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .card-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .card-notes {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .note-tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      border: 1px solid rgba(201,169,110,0.2);
+      padding: 0.3rem 0.75rem;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+
+    .card-price span {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-left: 0.3rem;
+    }
+
+    .card-add {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid rgba(201,169,110,0.2);
+      padding: 0.6rem 1.1rem;
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.3s;
+    }
+
+    .card-add:hover {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+
+    .story {
+      padding: 7rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      background: var(--dark2);
+    }
+
+    .story-visual { position: relative; }
+
+    .story-box {
+      width: 100%;
+      padding-top: 120%;
+      background: var(--dark3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-box::after {
+      content: 'OUMUO';
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(201,169,110,0.06);
+      letter-spacing: 0.15em;
+    }
+
+    .story-accent {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      width: 60%;
+      height: 40%;
+      border: 1px solid rgba(201,169,110,0.2);
+      z-index: -1;
+    }
+
+    .story-accent2 {
+      position: absolute;
+      top: -1.5rem;
+      left: -1.5rem;
+      width: 40%;
+      height: 30%;
+      border: 1px solid rgba(201,169,110,0.12);
+      z-index: -1;
+    }
+
+    .story-inner-img {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .story-text .section-header {
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    .story-body {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.95;
+      margin-bottom: 1.5rem;
+    }
+
+    .story-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(201,169,110,0.12);
+    }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    .categories {
+      padding: 7rem 4rem;
+      background: var(--dark);
+    }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 2px;
+    }
+
+    .cat-card {
+      padding: 3.5rem 3rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      display: block;
+      text-decoration: none;
+    }
+
+    .cat-card:nth-child(1) { grid-row: 1 / 3; background: var(--dark2); min-height: 500px; }
+    .cat-card:nth-child(2) { background: var(--dark3); }
+    .cat-card:nth-child(3) { background: var(--dark2); }
+    .cat-card:nth-child(4) { background: var(--dark2); }
+    .cat-card:nth-child(5) { background: var(--dark3); }
+
+    .cat-tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .cat-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .cat-card:nth-child(1) .cat-name { font-size: 2.4rem; }
+
+    .cat-count { font-size: 0.75rem; color: var(--text-muted); }
+
+    .cat-arrow {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 2.5rem;
+      font-size: 1.5rem;
+      color: var(--gold-dark);
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .cat-card:hover .cat-arrow { transform: translate(4px, -4px); color: var(--gold); }
+
+    .brands {
+      padding: 5rem 4rem;
+      background: var(--dark2);
+      border-top: 1px solid rgba(201,169,110,0.1);
+      border-bottom: 1px solid rgba(201,169,110,0.1);
+    }
+
+    .brands-list {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(201,169,110,0.25);
+      transition: color 0.4s;
+      cursor: default;
+    }
+
+    .brand-item:hover { color: var(--gold); }
+
+    .newsletter {
+      padding: 7rem 4rem;
+      background: var(--dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newsletter::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,169,110,0.07);
+    }
+
+    .newsletter::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,169,110,0.05);
+    }
+
+    .newsletter-inner { position: relative; z-index: 1; max-width: 540px; margin: 0 auto; }
+
+    .newsletter-desc {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.85;
+      margin: 1rem 0 2.5rem;
+    }
+
+    .nl-form {
+      display: flex;
+      max-width: 420px;
+      margin: 0 auto;
+      border: 1px solid rgba(201,169,110,0.3);
+    }
+
+    .nl-input {
+      flex: 1;
+      padding: 1rem 1.2rem;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--text);
+      letter-spacing: 0.06em;
+    }
+
+    .nl-input::placeholder { color: var(--text-muted); }
+
+    .nl-btn {
+      padding: 1rem 1.5rem;
+      background: var(--gold);
+      border: none;
+      color: var(--black);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s;
+      white-space: nowrap;
+    }
+
+    .nl-btn:hover { background: var(--gold-light); }
+
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(201,169,110,0.1);
+      padding: 4rem 4rem 2rem;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .footer-tagline {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 240px;
+    }
+
+    .footer-col-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(201,169,110,0.08);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.05em; }
+
+    .footer-social { display: flex; gap: 1.5rem; }
+
+    .footer-social a {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-social a:hover { color: var(--gold); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up { opacity: 0; animation: fadeUp 0.8s ease forwards; }
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.45s; }
+    .delay-4 { animation-delay: 0.6s; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 1.5rem; padding-top: 90px; text-align: center; }
+      .hero h1 { font-size: 3rem; }
+      .hero-desc { margin: 0 auto 2rem; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { height: 45vh; }
+      .hero-ornament { display: none; }
+      .bottle-frame { width: 180px; height: 290px; }
+      .featured, .story, .categories, .newsletter { padding: 4rem 1.5rem; }
+      .perfume-grid { grid-template-columns: 1fr; gap: 2px; }
+      .story { grid-template-columns: 1fr; gap: 3rem; }
+      .cat-grid { grid-template-columns: 1fr; }
+      .cat-card:nth-child(1) { grid-row: auto; }
+      .strip { padding: 1rem 1.5rem; flex-wrap: wrap; gap: 0.7rem; }
+      .brands { padding: 3rem 1.5rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      footer { padding: 3rem 1.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">OUMUO</a>
+  <ul class="nav-links">
+    <li><a href="#coleccion">Colección</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#categorias">Categorías</a></li>
+    <li><a href="#marcas">Marcas</a></li>
+  </ul>
+  <a href="#coleccion" class="nav-cta">Ver Tienda</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow fade-up">Perfumería de Lujo</p>
+    <h1 class="fade-up delay-1">El arte de<br>la <em>fragancia</em><br>auténtica</h1>
+    <p class="hero-desc fade-up delay-2">
+      En Oumuo reunimos las fragancias más icónicas del mundo — originales, certificadas y entregadas directamente a tu puerta.
+    </p>
+    <div class="hero-actions fade-up delay-3">
+      <a href="#coleccion" class="btn-primary">Explorar Colección</a>
+      <a href="#nosotros" class="btn-secondary">Nuestra Historia</a>
+    </div>
+  </div>
+
+  <div class="hero-visual fade-up delay-2">
+    <div class="bottle-frame">
+      <svg class="bottle-svg" viewBox="0 0 300 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bottleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1A1814"/><stop offset="30%" stop-color="#2A2620"/>
+            <stop offset="70%" stop-color="#1E1C17"/><stop offset="100%" stop-color="#111009"/>
+          </linearGradient>
+          <linearGradient id="goldEdge" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#C9A96E" stop-opacity="0"/>
+            <stop offset="30%" stop-color="#C9A96E" stop-opacity="0.8"/>
+            <stop offset="70%" stop-color="#E8D5AA" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#C9A96E" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="neckGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1A1814"/><stop offset="50%" stop-color="#242220"/>
+            <stop offset="100%" stop-color="#111009"/>
+          </linearGradient>
+          <linearGradient id="capGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#C9A96E"/><stop offset="50%" stop-color="#8B6D3F"/>
+            <stop offset="100%" stop-color="#6B5030"/>
+          </linearGradient>
+        </defs>
+        <rect x="115" y="30" width="70" height="60" rx="6" fill="url(#capGrad)"/>
+        <rect x="120" y="35" width="60" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
+        <rect x="115" y="82" width="70" height="8" fill="#6B5030"/>
+        <rect x="125" y="90" width="50" height="70" fill="url(#neckGrad)"/>
+        <rect x="125" y="90" width="2" height="70" fill="rgba(201,169,110,0.3)"/>
+        <rect x="173" y="90" width="2" height="70" fill="rgba(201,169,110,0.15)"/>
+        <rect x="110" y="155" width="80" height="12" rx="2" fill="#C9A96E" opacity="0.9"/>
+        <rect x="110" y="160" width="80" height="2" fill="rgba(255,255,255,0.3)"/>
+        <rect x="80" y="167" width="140" height="260" rx="4" fill="url(#bottleGrad)"/>
+        <rect x="80" y="167" width="3" height="260" rx="2" fill="url(#goldEdge)" opacity="0.5"/>
+        <rect x="217" y="167" width="3" height="260" rx="2" fill="rgba(201,169,110,0.2)"/>
+        <rect x="95" y="180" width="2" height="230" fill="rgba(201,169,110,0.08)"/>
+        <rect x="95" y="205" width="110" height="140" rx="2" fill="rgba(255,255,255,0.03)" stroke="rgba(201,169,110,0.2)" stroke-width="0.5"/>
+        <text x="150" y="245" font-family="Georgia, serif" font-size="8" fill="rgba(201,169,110,0.6)" text-anchor="middle" letter-spacing="4">OUMUO</text>
+        <line x1="105" y1="252" x2="195" y2="252" stroke="rgba(201,169,110,0.2)" stroke-width="0.5"/>
+        <text x="150" y="270" font-family="Georgia, serif" font-size="14" fill="rgba(232,210,170,0.8)" text-anchor="middle" letter-spacing="1" font-style="italic">Lumière Noire</text>
+        <line x1="105" y1="278" x2="195" y2="278" stroke="rgba(201,169,110,0.2)" stroke-width="0.5"/>
+        <text x="150" y="294" font-family="Georgia, serif" font-size="6.5" fill="rgba(201,169,110,0.5)" text-anchor="middle" letter-spacing="3">EAU DE PARFUM</text>
+        <text x="150" y="330" font-family="Georgia, serif" font-size="7" fill="rgba(201,169,110,0.4)" text-anchor="middle" letter-spacing="2">100 ml</text>
+        <rect x="80" y="419" width="140" height="8" rx="2" fill="rgba(201,169,110,0.4)"/>
+        <rect x="85" y="427" width="130" height="8" rx="2" fill="#0A0908"/>
+      </svg>
+    </div>
+    <div class="glow-ring"></div>
+    <div class="hero-ornament">O</div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-item"><div class="strip-dot"></div> Envíos a toda Latinoamérica</div>
+  <div class="strip-item"><div class="strip-dot"></div> 100% Originales & Certificados</div>
+  <div class="strip-item"><div class="strip-dot"></div> +200 Fragancias Disponibles</div>
+  <div class="strip-item"><div class="strip-dot"></div> Pago Seguro</div>
+  <div class="strip-item"><div class="strip-dot"></div> Garantía de Autenticidad</div>
+</div>
+
+<section class="featured" id="coleccion">
+  <div class="section-header">
+    <p class="section-eyebrow">Selección Destacada</p>
+    <h2 class="section-title">Fragancias <em>Icónicas</em></h2>
+  </div>
+  <div class="perfume-grid">
+    <div class="perfume-card">
+      <div class="card-number">01</div>
+      <p class="card-brand">Chanel</p>
+      <h3 class="card-name">Bleu de Chanel</h3>
+      <p class="card-desc">Una declaración de libertad. Maderas aromáticas y cítricos se entrelazan en una fragancia que define la modernidad masculina.</p>
+      <div class="card-notes"><span class="note-tag">Madera</span><span class="note-tag">Cítrico</span><span class="note-tag">Ámbar</span></div>
+      <div class="card-footer">
+        <div class="card-price">S/ 320 <span>100ml EDP</span></div>
+        <button class="card-add">Agregar</button>
+      </div>
+    </div>
+    <div class="perfume-card">
+      <div class="card-number">02</div>
+      <p class="card-brand">Dior</p>
+      <h3 class="card-name">Sauvage</h3>
+      <p class="card-desc">Salvaje y sofisticado. La lavanda de Provenza y la bergamota se funden en un clásico contemporáneo irresistible.</p>
+      <div class="card-notes"><span class="note-tag">Amaderado</span><span class="note-tag">Lavanda</span><span class="note-tag">Bergamota</span></div>
+      <div class="card-footer">
+        <div class="card-price">S/ 295 <span>100ml EDP</span></div>
+        <button class="card-add">Agregar</button>
+      </div>
+    </div>
+    <div class="perfume-card">
+      <div class="card-number">03</div>
+      <p class="card-brand">Tom Ford</p>
+      <h3 class="card-name">Black Orchid</h3>
+      <p class="card-desc">Misterioso y opulento. Orquídeas oscuras y trufa negra crean un sillage que nunca pasa desapercibido.</p>
+      <div class="card-notes"><span class="note-tag">Floral</span><span class="note-tag">Oriental</span><span class="note-tag">Trufa</span></div>
+      <div class="card-footer">
+        <div class="card-price">S/ 380 <span>100ml EDP</span></div>
+        <button class="card-add">Agregar</button>
+      </div>
+    </div>
+    <div class="perfume-card">
+      <div class="card-number">04</div>
+      <p class="card-brand">Yves Saint Laurent</p>
+      <h3 class="card-name">Libre</h3>
+      <p class="card-desc">La esencia de la libertad femenina. Lavanda francesa y naranja blanca en un contraste seductor e inesperado.</p>
+      <div class="card-notes"><span class="note-tag">Lavanda</span><span class="note-tag">Floral</span><span class="note-tag">Vainilla</span></div>
+      <div class="card-footer">
+        <div class="card-price">S/ 275 <span>90ml EDP</span></div>
+        <button class="card-add">Agregar</button>
+      </div>
+    </div>
+    <div class="perfume-card">
+      <div class="card-number">05</div>
+      <p class="card-brand">Giorgio Armani</p>
+      <h3 class="card-name">Acqua di Giò Profumo</h3>
+      <p class="card-desc">El mar profundo embotellado. Incienso marino y pachulí se elevan sobre una base acuática irresistible.</p>
+      <div class="card-notes"><span class="note-tag">Acuático</span><span class="note-tag">Incienso</span><span class="note-tag">Pachulí</span></div>
+      <div class="card-footer">
+        <div class="card-price">S/ 310 <span>110ml EDP</span></div>
+        <button class="card-add">Agregar</button>
+      </div>
+    </div>
+    <div class="perfume-card">
+      <div class="card-number">06</div>
+      <p class="card-brand">Lancôme</p>
+      <h3 class="card-name">La Vie Est Belle</h3>
+      <p class="card-desc">La vida es bella. Iris y praliné se abrazan en una fragancia que celebra la alegría y la elegancia cotidiana.</p>
+      <div class="card-notes"><span class="note-tag">Gourmand</span><span class="note-tag">Iris</span><span class="note-tag">Sándalo</span></div>
+      <div class="card-footer">
+        <div class="card-price">S/ 260 <span>100ml EDP</span></div>
+        <button class="card-add">Agregar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="nosotros">
+  <div class="story-visual">
+    <div class="story-box">
+      <div class="story-inner-img">
+        <svg width="160" height="200" viewBox="0 0 160 200" fill="none">
+          <rect x="50" y="10" width="40" height="30" rx="3" fill="rgba(201,169,110,0.3)"/>
+          <rect x="58" y="40" width="25" height="35" fill="rgba(201,169,110,0.2)"/>
+          <rect x="30" y="75" width="100" height="115" rx="3" fill="rgba(201,169,110,0.12)" stroke="rgba(201,169,110,0.25)" stroke-width="0.5"/>
+          <text x="80" y="125" font-family="Georgia,serif" font-size="11" fill="rgba(201,169,110,0.5)" text-anchor="middle" letter-spacing="3">OUMUO</text>
+          <line x1="40" y1="132" x2="120" y2="132" stroke="rgba(201,169,110,0.2)" stroke-width="0.5"/>
+          <text x="80" y="148" font-family="Georgia,serif" font-size="7" fill="rgba(201,169,110,0.35)" text-anchor="middle" letter-spacing="2">PARFUMERIE</text>
+          <rect x="30" y="183" width="100" height="7" rx="2" fill="rgba(201,169,110,0.25)"/>
+        </svg>
+      </div>
+    </div>
+    <div class="story-accent"></div>
+    <div class="story-accent2"></div>
+  </div>
+  <div class="story-text">
+    <div class="section-header">
+      <p class="section-eyebrow">Nuestra Historia</p>
+      <h2 class="section-title">Nació de una <em>pasión</em></h2>
+    </div>
+    <p class="story-body">Oumuo nació de la convicción de que el lujo no debería ser exclusivo. Somos expertos en fragancias que conocemos cada nota, cada historia detrás de cada frasco.</p>
+    <p class="story-body">Trabajamos directamente con distribuidores autorizados de las grandes casas de perfumería para garantizar que cada fragancia que llega a tus manos sea 100% auténtica, con su caja, su certificado y su historia intacta.</p>
+    <p class="story-body">Con base en Perú, enviamos a toda Latinoamérica. Porque el aroma correcto puede cambiar cómo te sientes un día, cómo te recuerdan, cómo te presentas al mundo.</p>
+    <div class="story-stats">
+      <div><div class="stat-num">200+</div><div class="stat-label">Fragancias</div></div>
+      <div><div class="stat-num">15+</div><div class="stat-label">Marcas Premium</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">Originales</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="categories" id="categorias">
+  <div class="section-header">
+    <p class="section-eyebrow">Navega por</p>
+    <h2 class="section-title">Nuestras <em>Categorías</em></h2>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card"><p class="cat-tag">Colección Principal</p><h3 class="cat-name">Fragancias<br>Masculinas</h3><p class="cat-count">+80 fragancias disponibles</p><div class="cat-arrow">↗</div></div>
+    <div class="cat-card"><p class="cat-tag">Para ella</p><h3 class="cat-name">Femeninas</h3><p class="cat-count">+75 fragancias</p><div class="cat-arrow">↗</div></div>
+    <div class="cat-card"><p class="cat-tag">Sin género</p><h3 class="cat-name">Unisex</h3><p class="cat-count">+40 fragancias</p><div class="cat-arrow">↗</div></div>
+    <div class="cat-card"><p class="cat-tag">Ediciones especiales</p><h3 class="cat-name">Nicho & Niche</h3><p class="cat-count">+30 fragancias</p><div class="cat-arrow">↗</div></div>
+    <div class="cat-card"><p class="cat-tag">Oferta especial</p><h3 class="cat-name">Sets & Regalos</h3><p class="cat-count">+20 sets disponibles</p><div class="cat-arrow">↗</div></div>
+  </div>
+</section>
+
+<section class="brands" id="marcas">
+  <div class="section-header">
+    <p class="section-eyebrow">Trabajamos con</p>
+    <h2 class="section-title">Las mejores <em>casas</em></h2>
+  </div>
+  <div class="brands-list">
+    <div class="brand-item">Chanel</div>
+    <div class="brand-item">Dior</div>
+    <div class="brand-item">Tom Ford</div>
+    <div class="brand-item">YSL</div>
+    <div class="brand-item">Armani</div>
+    <div class="brand-item">Lancôme</div>
+    <div class="brand-item">Versace</div>
+    <div class="brand-item">Prada</div>
+    <div class="brand-item">Gucci</div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <p class="section-eyebrow">Mantente al día</p>
+    <h2 class="section-title">Nuevas <em>llegadas</em><br>y ofertas exclusivas</h2>
+    <p class="newsletter-desc">Sé el primero en conocer nuestras nuevas fragancias, ediciones limitadas y descuentos especiales para suscriptores.</p>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="tu@correo.com"/>
+      <button class="nl-btn">Suscribirse</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-logo">OUMUO</span>
+      <p class="footer-tagline">Fragancias de lujo originales para quienes viven con intensidad. Enviamos a toda Latinoamérica.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Tienda</p>
+      <ul class="footer-links">
+        <li><a href="#">Masculinas</a></li><li><a href="#">Femeninas</a></li>
+        <li><a href="#">Unisex</a></li><li><a href="#">Sets & Regalos</a></li><li><a href="#">Novedades</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Marcas</p>
+      <ul class="footer-links">
+        <li><a href="#">Chanel</a></li><li><a href="#">Dior</a></li>
+        <li><a href="#">Tom Ford</a></li><li><a href="#">YSL</a></li><li><a href="#">Armani</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Ayuda</p>
+      <ul class="footer-links">
+        <li><a href="#">¿Cómo comprar?</a></li><li><a href="#">Envíos</a></li>
+        <li><a href="#">Garantía</a></li><li><a href="#">Contacto</a></li><li><a href="#">Política de devoluciones</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Oumuo. Todos los derechos reservados.</p>
+    <div class="footer-social">
+      <a href="#">Instagram</a><a href="#">TikTok</a><a href="#">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.padding = window.scrollY > 80 ? '1rem 4rem' : '1.5rem 4rem';
+  });
+
+  document.querySelectorAll('.card-add').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const original = this.textContent;
+      this.textContent = '✓ Agregado';
+      this.style.background = 'var(--gold)';
+      this.style.color = 'var(--black)';
+      this.style.borderColor = 'var(--gold)';
+      setTimeout(() => {
+        this.textContent = original;
+        this.style.background = '';
+        this.style.color = '';
+        this.style.borderColor = '';
+      }, 1800);
+    });
+  });
+
+  document.querySelector('.nl-btn').addEventListener('click', function() {
+    const input = document.querySelector('.nl-input');
+    if (input.value.includes('@')) {
+      this.textContent = '¡Listo!';
+      input.value = '';
+      setTimeout(() => { this.textContent = 'Suscribirse'; }, 2500);
+    }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.perfume-card, .cat-card, .brand-item, .stat-num').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
