@@ -1,0 +1,25 @@
+// =========================
+// FILE: js/main.js
+// =========================
+
+// ANIMACIÓN SCROLL FADE-IN
+
+const fadeElements = document.querySelectorAll('.fade-in');
+
+const showOnScroll = () => {
+
+  fadeElements.forEach(element => {
+
+    const top = element.getBoundingClientRect().top;
+
+    if(top < window.innerHeight - 100){
+      element.classList.add('show');
+    }
+
+  });
+
+};
+
+window.addEventListener('scroll', showOnScroll);
+
+showOnScroll();
